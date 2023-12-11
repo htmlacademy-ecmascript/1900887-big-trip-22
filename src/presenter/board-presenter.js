@@ -21,7 +21,7 @@ export default class BoardPresenter {
     render(new EditPointView(), this.listComponent.getElement());
     render(new AddPointView(), this.listComponent.getElement());
     render(new PointWithoutDestinationView(), this.listComponent.getElement());
-    render(new PointWithoutOffersView(), this,this.listComponent.getElement());
+    render(new PointWithoutOffersView(), this.listComponent.getElement());
 
     for (let i = 0; i < 3; i++) {
       render(new PointView(), this.listComponent.getElement());
