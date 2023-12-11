@@ -1,6 +1,6 @@
 import {HeaderView} from '../view/point/header-view.js';
 import {render} from '../render.js';
-import {ListFilterView} from "../view/filter/list-filter-view";
+import {ListFilterView} from '../view/filter/list-filter-view.js';
 
 
 export class HeaderPresenter {
