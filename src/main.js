@@ -1,7 +1,5 @@
 import BoardPresenter from './presenter/board-presenter.js';
-import {render} from './render.js';
-import {ListFilterView} from './view/filter/list-filter-view.js';
-import {HeaderPresenter} from "./presenter/header-presenter";
+import {HeaderPresenter} from './presenter/header-presenter.js';
 
 const mainContainer = document.querySelector('.trip-events');
 const headerContainer = document.querySelector('.trip-main');
