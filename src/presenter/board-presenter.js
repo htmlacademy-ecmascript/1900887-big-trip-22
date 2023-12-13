@@ -11,11 +11,13 @@ export default class BoardPresenter {
   sortComponent = new ListSortView();
   listComponent = new ListView();
 
-  constructor({eventsContainer}) {
+  constructor({eventsContainer, model}) {
     this.eventsContainer = eventsContainer;
+    this.model = model;
   }
 
   init() {
+    this.boardPoints = [...this.model.getPoints()];
     render(this.sortComponent, this.eventsContainer);
     render(this.listComponent, this.eventsContainer);
     render(new EditPointView(), this.listComponent.getElement());
@@ -23,8 +25,8 @@ export default class BoardPresenter {
     render(new PointWithoutDestinationView(), this.listComponent.getElement());
     render(new PointWithoutOffersView(), this.listComponent.getElement());
 
-    for (let i = 0; i < 3; i++) {
-      render(new PointView(), this.listComponent.getElement());
+    for (let i = 0; i < this.boardPoints.length; i++) {
+      render(new PointView({point: this.boardPoints[i]}), this.listComponent.getElement());
     }
   }
 }
