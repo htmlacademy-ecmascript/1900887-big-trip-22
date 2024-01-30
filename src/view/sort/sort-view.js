@@ -31,7 +31,7 @@ const createSortTemplate = () => (
   `
 );
 
-export class ListSortView {
+export class SortView {
   getTemplate() {
     return createSortTemplate();
   }

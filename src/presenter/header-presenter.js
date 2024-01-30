@@ -5,6 +5,7 @@ import {render, RenderPosition} from '../render.js';
 
 export class HeaderPresenter {
   tripMainContainer = document.querySelector('.trip-main');
+
   constructor({eventsContainer}) {
     this.eventsContainer = eventsContainer;
   }
