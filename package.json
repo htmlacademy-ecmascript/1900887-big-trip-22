@@ -29,5 +29,9 @@
   },
   "engines": {
     "node": "20"
+  },
+  "dependencies": {
+    "css-loader": "^6.7.3",
+    "style-loader": "^3.3.2"
   }
 }

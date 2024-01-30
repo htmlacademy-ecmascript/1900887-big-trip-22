@@ -1,4 +1,5 @@
 import {createElement} from '../../render.js';
+import AbstractView from "../../framework/view/abstract-view";
 
 const createEditPointTemplate = () => (
   `
@@ -160,20 +161,9 @@ const createEditPointTemplate = () => (
   `
 );
 
-export class EditPointView {
-  getTemplate() {
+export class EditPointView extends AbstractView{
+
+  get template() {
     return createEditPointTemplate();
-  }
-
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-    return this.element;
-  }
-
-  removeElement() {
-    this.element = null;
   }
 }

@@ -6,7 +6,7 @@ import {AddPointView} from '../view/point/add-point-view.js';
 
 export default class BoardPresenter {
   sortPointsComponent = new SortView();
-  listPointsComponent = new ListView();
+  listPointsComponent = new ListView().template;
 
   constructor({eventsContainer, model}) {
     this.eventsContainer = eventsContainer;
@@ -24,7 +24,7 @@ export default class BoardPresenter {
         point: this.boardPoints[i],
         destination: this.model.getDestinationByID(this.boardPoints[i].destination),
         offers: this.model.getOfferById(this.boardPoints[i].type, this.boardPoints[i].offers),
-      }), this.listPointsComponent.getElement()
+      }), this.listPointsComponent.template()
       );
     }
   }
