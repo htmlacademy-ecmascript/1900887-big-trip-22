@@ -6,12 +6,12 @@ const createCheckedOffer = (offer) => {
       <li class="event__offer">
           <span class="event__offer-title">${offer.title}</span>&plus;&euro;&nbsp;<span class="event__offer-price">${offer.price}</span>
       </li>
-    `
+    `;
   }
-}
+};
 
 const createPointTemplate = (point, destination, offers) => {
-  const { basePrice, dateFrom, dateTo, is_favorite, type } = point;
+  const { basePrice, dateFrom, dateTo, type } = point;
   const { name } = destination;
 
   return (

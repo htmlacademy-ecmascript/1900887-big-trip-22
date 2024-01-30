@@ -21,11 +21,11 @@ export default class BoardPresenter {
 
     for (let i = 0 ; i < 3; i++) {
       render (new PointView({
-          point: this.boardPoints[i],
-          destination: this.model.getDestinationByID(this.boardPoints[i].destination),
-          offers: this.model.getOfferById(this.boardPoints[i].type, this.boardPoints[i].offers),
-        }), this.listPointsComponent.getElement()
-      )
+        point: this.boardPoints[i],
+        destination: this.model.getDestinationByID(this.boardPoints[i].destination),
+        offers: this.model.getOfferById(this.boardPoints[i].type, this.boardPoints[i].offers),
+      }), this.listPointsComponent.getElement()
+      );
     }
   }
 }

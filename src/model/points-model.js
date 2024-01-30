@@ -1,6 +1,6 @@
 import {POINTS} from '../mock/points.js';
-import {DESTINATIONS} from "../mock/destinations.js";
-import {OFFERS} from "../mock/offers.js";
+import {DESTINATIONS} from '../mock/destinations.js';
+import {OFFERS} from '../mock/offers.js';
 
 export default class PointsModel {
   points = POINTS;
@@ -29,11 +29,5 @@ export default class PointsModel {
     return currentOffer.filter((item) => offers.includes(item.id));
   }
 
-  getCheckedOffer() {
-
-  }
-
-  getCheckedOffers(checkedOffersList) {
-    console.log(checkedOffersList.forEach((checkedOffer) => this.offers.includes(checkedOffer)))
-  }
+  getCheckedOffer() {}
 }

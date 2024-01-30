@@ -1,18 +1,15 @@
 import {createElement} from '../../render.js';
 
-const createOffer = (offer) => {
-  return `
+const createOffer = (offer) => (`
       <div class="event__offer-selector">
           <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage">
           <label class="event__offer-label" for="event-offer-luggage-1">
               <span class="event__offer-title">${offer.title}</span>&plus;&euro;&nbsp;<span class="event__offer-price">${offer.price}</span>
           </label>
       </div>
-  `
-}
+  `);
 
-const createEventsTemplate = (offers) => {
-  return `
+const createEventsTemplate = (offers) => `
   <li class="trip-events__item">
     <form class="event event--edit" action="#" method="post">
       <header class="event__header">
@@ -132,13 +129,13 @@ const createEventsTemplate = (offers) => {
       </section>
     </form>
   </li>
-  `
-};
+  `;
 
 export class AddPointView {
   constructor({offers}) {
     this.offers = offers;
   }
+
   getTemplate() {
     return createEventsTemplate(this.offers);
   }
