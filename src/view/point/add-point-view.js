@@ -1,5 +1,4 @@
 import AbstractView from '../../framework/view/abstract-vie.js';
-import {replace} from '../../framework/render.js';
 
 const createOffer = (offer) => (`
       <div class="event__offer-selector">
@@ -133,21 +132,13 @@ const createEventsTemplate = (offers) => `
   `;
 
 export class AddPointView extends AbstractView {
-  #onExpanderClick = null;
 
   constructor({offers}) {
     super();
     this.offers = offers;
-    this.#onExpanderClick = this.#showEditForm;
-    console.log(this.element.querySelector('.event__rollup-btn'))
-    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#onExpanderClick);
   }
 
   get template() {
     return createEventsTemplate(this.offers);
-  }
-
-  #showEditForm() {
-    replace()
   }
 }
