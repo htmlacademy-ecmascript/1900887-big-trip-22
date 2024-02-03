@@ -6,9 +6,7 @@ const pointsModel = new PointsModel();
 const mainContainer = document.querySelector('.trip-events');
 const headerContainer = document.querySelector('.trip-controls__filters');
 const boardPresenter = new BoardPresenter({eventsContainer: mainContainer, model: pointsModel});
-const headerPresenter = new HeaderPresenter({eventsContainer: headerContainer});
 
-headerPresenter.init();
 boardPresenter.init();
 
 

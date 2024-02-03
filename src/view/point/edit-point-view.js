@@ -1,8 +1,20 @@
-import {createElement} from '../../render.js';
-import AbstractView from "../../framework/view/abstract-view";
+import AbstractView from '../../framework/view/abstract-view.js';
 
-const createEditPointTemplate = () => (
+const createOfferTemplate = (offer) => (
   `
+  <div class="event__offer-selector">
+    <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage">
+    <label class="event__offer-label" for="event-offer-luggage-1">
+      <span class="event__offer-title">${offer.title}</span>
+      &plus;&euro;&nbsp;
+      <span class="event__offer-price">${offer.price}</span>
+    </label>
+  </div>`
+);
+
+const createEditPointTemplate = (allOffers) => {
+  const { offers } = allOffers;
+  return `
     <li class="trip-events__item">
     <form class="event event--edit" action="#" method="post">
     <header class="event__header">
@@ -104,50 +116,7 @@ const createEditPointTemplate = () => (
         <h3 class="event__section-title  event__section-title--offers">Offers</h3>
 
         <div class="event__available-offers">
-          <div class="event__offer-selector">
-            <input class="event__offer-checkbox  visually-hidden" id="event-offer-luggage-1" type="checkbox" name="event-offer-luggage" checked>
-            <label class="event__offer-label" for="event-offer-luggage-1">
-              <span class="event__offer-title">Add luggage</span>
-              &plus;&euro;&nbsp;
-              <span class="event__offer-price">50</span>
-            </label>
-          </div>
-
-          <div class="event__offer-selector">
-            <input class="event__offer-checkbox  visually-hidden" id="event-offer-comfort-1" type="checkbox" name="event-offer-comfort" checked>
-            <label class="event__offer-label" for="event-offer-comfort-1">
-              <span class="event__offer-title">Switch to comfort</span>
-              &plus;&euro;&nbsp;
-              <span class="event__offer-price">80</span>
-            </label>
-          </div>
-
-          <div class="event__offer-selector">
-            <input class="event__offer-checkbox  visually-hidden" id="event-offer-meal-1" type="checkbox" name="event-offer-meal">
-            <label class="event__offer-label" for="event-offer-meal-1">
-              <span class="event__offer-title">Add meal</span>
-              &plus;&euro;&nbsp;
-              <span class="event__offer-price">15</span>
-            </label>
-          </div>
-
-          <div class="event__offer-selector">
-            <input class="event__offer-checkbox  visually-hidden" id="event-offer-seats-1" type="checkbox" name="event-offer-seats">
-            <label class="event__offer-label" for="event-offer-seats-1">
-              <span class="event__offer-title">Choose seats</span>
-              &plus;&euro;&nbsp;
-              <span class="event__offer-price">5</span>
-            </label>
-          </div>
-
-          <div class="event__offer-selector">
-            <input class="event__offer-checkbox  visually-hidden" id="event-offer-train-1" type="checkbox" name="event-offer-train">
-            <label class="event__offer-label" for="event-offer-train-1">
-              <span class="event__offer-title">Travel by train</span>
-              &plus;&euro;&nbsp;
-              <span class="event__offer-price">40</span>
-            </label>
-          </div>
+          ${offers.map((offer) => createOfferTemplate(offer)).join('')}
         </div>
       </section>
 
@@ -158,12 +127,34 @@ const createEditPointTemplate = () => (
     </section>
   </form>
   </li>
-  `
-);
+  `;
+};
 
-export class EditPointView extends AbstractView{
+export class EditPointView extends AbstractView {
+
+  #handleSubmit = null;
+  #handleClose = null;
+  #offers = null;
+
+  constructor(point, destination, offers, onSubmit, onClose) {
+    super();
+    this.#offers = offers;
+    this.#handleSubmit = onSubmit;
+    this.#handleClose = onClose;
+    this.element.querySelector('.event__save-btn').addEventListener('click', this.#onFormSubmit);
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#onFormClose);
+  }
 
   get template() {
-    return createEditPointTemplate();
+    return createEditPointTemplate(this.#offers);
   }
+
+  #onFormSubmit = (evt) => {
+    evt.preventDefault();
+    this.#handleSubmit();
+  };
+
+  #onFormClose = () => {
+    this.#handleClose();
+  };
 }

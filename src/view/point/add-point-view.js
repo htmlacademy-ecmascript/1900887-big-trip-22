@@ -1,5 +1,5 @@
-import {createElement} from '../../render.js';
 import AbstractView from "../../framework/view/abstract-view";
+import {replace} from "../../framework/render.js";
 
 const createOffer = (offer) => (`
       <div class="event__offer-selector">
@@ -132,21 +132,22 @@ const createEventsTemplate = (offers) => `
   </li>
   `;
 
-export class AddPointView extends AbstractView{
+export class AddPointView extends AbstractView {
+  #onExpanderClick = null;
+
   constructor({offers}) {
     super();
     this.offers = offers;
+    this.#onExpanderClick = this.#showEditForm;
+    console.log(this.element.querySelector('.event__rollup-btn'))
+    this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#onExpanderClick);
   }
 
   get template() {
     return createEventsTemplate(this.offers);
   }
 
-  getElement() {
-    if (!this.element) {
-      this.element = createElement(this.getTemplate());
-    }
-
-    return this.element;
+  #showEditForm() {
+    replace()
   }
 }

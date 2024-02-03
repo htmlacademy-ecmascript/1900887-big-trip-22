@@ -24,7 +24,7 @@ export default class PointsModel {
     return this.offers.find((offer) => offer.type === type);
   }
 
-  getOfferById(type, offers) {
+  getOffersById(type, offers) {
     const currentOffer = this.offers.find((item) => item.type === type).offers;
     return currentOffer.filter((item) => offers.includes(item.id));
   }
