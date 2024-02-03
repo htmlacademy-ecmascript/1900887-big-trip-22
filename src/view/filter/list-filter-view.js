@@ -1,10 +1,8 @@
 import {createElement} from '../../render.js';
+import AbstractView from '../../framework/view/abstract-view.js';
 
 const createListFilterTemplate = () => (
   `
-  <div class="trip-main__trip-controls  trip-controls">
-  <div class="trip-controls__filters">
-    <h2 class="visually-hidden">Filter events</h2>
     <form class="trip-filters" action="#" method="get">
       <div class="trip-filters__filter">
         <input id="filter-everything" class="trip-filters__filter-input  visually-hidden" type="radio" name="trip-filter" value="everything">
@@ -28,15 +26,10 @@ const createListFilterTemplate = () => (
 
       <button class="visually-hidden" type="submit">Accept filter</button>
     </form>
-  </div>
-  </div>
   `
 );
 
-export class ListFilterView {
-  getTemplate() {
-    return createListFilterTemplate();
-  }
+export class ListFilterView extends AbstractView {
 
   getElement() {
     if (!this.element) {
@@ -46,7 +39,7 @@ export class ListFilterView {
     return this.element;
   }
 
-  removeElement() {
-    this.element = null;
+  get template() {
+    return createListFilterTemplate();
   }
 }
