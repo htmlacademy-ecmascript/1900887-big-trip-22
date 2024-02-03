@@ -1,5 +1,5 @@
-import AbstractView from "../../framework/view/abstract-view";
-import {replace} from "../../framework/render.js";
+import AbstractView from '../../framework/view/abstract-vie.js';
+import {replace} from '../../framework/render.js';
 
 const createOffer = (offer) => (`
       <div class="event__offer-selector">
