@@ -2,7 +2,7 @@ import {getRandomNumber} from './utils.js';
 
 export const POINTS = [
   {
-    id: 'f4b62099-293f-4c3d-a702-94eec4a2808c',
+    id: 'f4b62099-293f-4c3d-a702-94eec4a28081',
     basePrice: getRandomNumber(10000),
     dateFrom: '2019-07-10T22:55:56.845Z',
     dateTo: '2019-07-11T11:22:13.375Z',
@@ -29,7 +29,7 @@ export const POINTS = [
     type: 'flight'
   },
   {
-    id: 'f4b62099-293f-4c3d-a702-94eec4a2808c',
+    id: 'f4b62099-293f-4c3d-a702-94eec4a2808t',
     basePrice: getRandomNumber(10000),
     dateFrom: '2019-07-10T22:55:56.845Z',
     dateTo: '2019-07-11T11:22:13.375Z',
