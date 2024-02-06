@@ -10,9 +10,11 @@ const createCheckedOffer = (offer) => {
   }
 };
 
-const createPointTemplate = (point, destination, offers) => {
-  const { basePrice, dateFrom, dateTo, type } = point;
-  const { name } = destination;
+const createPointTemplate = (point, destinations, offers) => {
+  const { basePrice, dateFrom, dateTo, type, isFavorite } = point;
+  const { name } = destinations.find((item) => item.id === point.destination);
+  const pointOffers = offers.find((offer) => offer.type === point.type).offers;
+  const checkedOffers = pointOffers.filter((item) => point.offers.includes(item.id));
 
   return (
     `<li class="trip-events__item">
@@ -35,9 +37,9 @@ const createPointTemplate = (point, destination, offers) => {
       </p>
       <h4 class="visually-hidden">Offers:</h4>
       <ul class="event__selected-offers">
-        ${offers.map((offer) => createCheckedOffer(offer)).join('')}
+        ${checkedOffers ? checkedOffers.map((offer) => createCheckedOffer(offer)).join('') : ''}
       </ul>
-      <button class="event__favorite-btn event__favorite-btn--active" type="button">
+      <button class="event__favorite-btn event__favorite-btn${isFavorite ? '--active' : ''}" type="button">
         <span class="visually-hidden">Add to favorite</span>
         <svg class="event__favorite-icon" width="28" height="28" viewBox="0 0 28 28">
           <path d="M14 21l-8.22899 4.3262 1.57159-9.1631L.685209 9.67376 9.8855 8.33688 14 0l4.1145 8.33688 9.2003 1.33688-6.6574 6.48934 1.5716 9.1631L14 21z"/>
@@ -54,29 +56,36 @@ const createPointTemplate = (point, destination, offers) => {
 export default class PointView extends AbstractView {
 
   #point = null;
-  #destination = null;
+  #destinations = null;
   #offers = null;
-  #onExpanderClick = null;
+  #onClick = null;
+  #handleFavouriteBtnClick;
 
-  constructor(point, destination, offers, onSubmit) {
+  constructor({point, destinations, offers, onClick, onFavouriteClick}) {
     super();
     this.#point = point;
-    this.#destination = destination;
+    this.#destinations = destinations;
     this.#offers = offers;
-    this.#onExpanderClick = onSubmit;
+    this.#onClick = onClick;
+    this.#handleFavouriteBtnClick = onFavouriteClick;
+
     this.element.querySelector('.event__rollup-btn').addEventListener('click', this.#onEditBtnClick);
+    this.element.querySelector('.event__favorite-btn').addEventListener('click', this.#onFavouriteClick);
   }
 
   get template() {
     return createPointTemplate(
       this.#point,
-      this.#destination,
+      this.#destinations,
       this.#offers,
     );
   }
 
-  #onEditBtnClick = (evt) => {
-    evt.preventDefault();
-    this.#onExpanderClick();
+  #onEditBtnClick = () => {
+    this.#onClick();
+  };
+
+  #onFavouriteClick = () => {
+    this.#handleFavouriteBtnClick();
   };
 }
