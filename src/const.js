@@ -1,23 +1,7 @@
 const TRIP_TYPES = ['Taxi', 'Bus', 'Train', 'Ship', 'Drive', 'Flight', 'Check-in', 'Sightseeing', 'Restaurant'];
+const BASE_URL = 'https://22.objects.htmlacademy.pro/big-trip';
+const AUTHORIZATION_STRING = 'Basic 1900887bigtrip22';
 
-const BASE_URL = 'https://22.objects.htmlacademy.pro/spec/big-trip';
-
-const AUTHORIZATION_STRING = 'Basic sfjdlkjdfhg';
-
-const FilterType = {
-  EVERYTHING: 'EVERYTHING',
-  FUTURE: 'FUTURE',
-  PRESENT: 'PRESENT',
-  PAST: 'PAST'
-};
-
-const SortingType = {
-  DAY: {name: 'day', isDisabled: false},
-  EVENT: {name: 'event', isDisabled: true},
-  TIME: {name: 'time', isDisabled: false},
-  PRICE: {name: 'price', isDisabled: false},
-  OFFER: {name: 'offer', isDisabled: true}
-};
 
 const BLANK_POINT = {
   'type': TRIP_TYPES[5].toLowerCase(),
@@ -48,6 +32,20 @@ const InfoMessageByAction = {
   ERROR: 'Failed to load latest route information',
 };
 
+const FilterType = {
+  EVERYTHING: 'EVERYTHING',
+  FUTURE: 'FUTURE',
+  PRESENT: 'PRESENT',
+  PAST: 'PAST'
+};
+
+const SortingType = {
+  DAY: {name: 'day', isDisabled: false},
+  EVENT: {name: 'event', isDisabled: true},
+  TIME: {name: 'time', isDisabled: false},
+  PRICE: {name: 'price', isDisabled: false},
+  OFFER: {name: 'offer', isDisabled: true}
+};
 
 const ModeType = {
   'DEFAULT': 'DEFAULT',
@@ -56,7 +54,6 @@ const ModeType = {
 };
 
 const DEFAULT_SORT_TYPE = SortingType.DAY.name;
-
 const DEFAULT_FILTER_TYPE = FilterType.EVERYTHING;
 
 const UserAction = {
@@ -84,6 +81,7 @@ const BlockerTimeLimit = {
   LOWER_LIMIT: 350,
   UPPER_LIMIT: 1000,
 };
+
 
 export {
   TRIP_TYPES,
