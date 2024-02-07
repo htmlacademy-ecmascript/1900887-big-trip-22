@@ -52,7 +52,7 @@ export default class TripPresenter {
   };
 
   #onPointEditOpen = () => {
-    this.#pointsPresenter.forEach((pointPresenter) => pointPresenter.reset());
+    this.#pointsPresenter.forEach((pointPresenter) => pointPresenter.resetView());
   };
 
   init() {
