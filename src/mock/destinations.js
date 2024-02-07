@@ -17,18 +17,18 @@ export const DESTINATIONS = [
     pictures: [
       {
         src: 'http://picsum.photos/300/200?r=0.0762563005163317',
-        description: 'Chamonix parliament building'
+        description: 'Екатеринбург'
       }
     ]
   },
   {
     id: 'bfa5cb75-a1fe-4b77-a83c-0e528e910e05',
-    description: 'Chamonix, is a beautiful city, a true asian pearl, with crowded streets.',
+    description: 'Москва, is a beautiful city, a true asian pearl, with crowded streets.',
     name: 'Москва',
     pictures: [
       {
         src: 'http://picsum.photos/300/200?r=0.0762563005163317',
-        description: 'Chamonix parliament building'
+        description: 'Москва'
       }
     ]
   }

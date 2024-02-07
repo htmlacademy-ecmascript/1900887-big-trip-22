@@ -32,12 +32,12 @@ export default class PointPresenter {
       onClick: this.#onEditBtnClick,
       onFavouriteClick: this.#onFavouriteClick});
 
-    this.#editPointComponent = new EditPointView(
-      this.#point,
-      this.destinations,
-      this.offers,
-      this.#onSubmit,
-      this.#onClose);
+    this.#editPointComponent = new EditPointView({
+      point: this.#point,
+      destination: this.destinations,
+      offers: this.offers,
+      onSubmit: this.#onSubmit,
+      onClose: this.#onClose});
 
     if (prevPointComponent === null || prevEditComponent === null) {
       render(this.#pointComponent, this.#listPointsComponent.element);
@@ -81,8 +81,9 @@ export default class PointPresenter {
     this.#handleDataChange({...this.#point, isFavorite: !this.#point.isFavorite});
   }
 
-  reset = () => {
+  resetView = () => {
     if (this.#isEditMode) {
+      this.#editPointComponent.reset(this.#point);
       this.#replaceFormToPoint();
     }
   };
