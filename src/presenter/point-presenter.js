@@ -9,6 +9,7 @@ export default class PointPresenter {
   #listPointsComponent = null;
   #handleDataChange;
   #onPointEditOpen;
+  #onDeleteClick;
   #isEditMode = false;
 
   constructor({destinations, offers, listPointsComponent, onDataChange, onEditClick}) {
@@ -37,7 +38,8 @@ export default class PointPresenter {
       destination: this.destinations,
       offers: this.offers,
       onSubmit: this.#onSubmit,
-      onClose: this.#onClose});
+      onClose: this.#onClose,
+      onDelete: this.#onDelete});
 
     if (prevPointComponent === null || prevEditComponent === null) {
       render(this.#pointComponent, this.#listPointsComponent.element);
@@ -55,6 +57,10 @@ export default class PointPresenter {
   #onSubmit = () => this.#replaceFormToPoint();
 
   #onClose = () => this.#replaceFormToPoint();
+
+  #onDelete = () => {
+
+  };
 
   #onFavouriteClick = () => this.#setIsFavorite();
 

@@ -144,19 +144,21 @@ const createEditPointTemplate = (point, destinations, offers) => {
 
 export class EditPointView extends AbstractStatefulView {
 
-  #handleSubmit = null;
-  #handleClose = null;
+  #handleSubmit;
+  #handleClose;
+  #handleDelete;
   #point = null;
   #destinations = null;
   #offers = null;
 
-  constructor({point, destination, offers, onSubmit, onClose}) {
+  constructor({point, destination, offers, onSubmit, onClose, onDelete}) {
     super();
     this.#point = point;
     this.#destinations = destination;
     this.#offers = offers;
     this.#handleSubmit = onSubmit;
     this.#handleClose = onClose;
+    this.#handleDelete = onDelete;
 
     this._setState(EditPointView.parsePointToState({point}));
     this._restoreHandlers();
@@ -213,6 +215,8 @@ export class EditPointView extends AbstractStatefulView {
     this.element.querySelectorAll('.event__offer-checkbox').forEach((checkbox) => {
       checkbox.addEventListener('change', this.#onOffersChange);
     });
+
+    this.element.querySelector('.event__reset-btn').addEventListener('click', this.#handleDelete);
   };
 
   static parsePointToState = ({point}) => ({...point});

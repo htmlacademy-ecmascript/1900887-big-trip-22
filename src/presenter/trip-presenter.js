@@ -28,7 +28,7 @@ export default class TripPresenter {
       offers: offers,
       listPointsComponent: this.#listPointsComponent,
       onDataChange: this.#handlePointsDataChange,
-      onEditClick: this.#onPointEditOpen
+      onEditClick: this.#onPointEditOpen,
     });
 
     this.#pointsPresenter.set(point.id, pointPresenter);
@@ -46,9 +46,18 @@ export default class TripPresenter {
     this.#renderPoints();
   }
 
-  #handlePointsDataChange = (updatedPoint) => {
-    this.#points = updatePoint(this.#points, updatedPoint);
-    this.#pointsPresenter.get(updatedPoint.id).init(updatedPoint);
+  #handlePointsDataChange = (actionType, updateType, update) => {
+    switch (actionType) {
+      case 'UPDATE':
+        this.#model.updatePoint(updateType, update);
+        break;
+      case 'ADD':
+        this.#model.addPoint(updateType, update);
+        break;
+      case 'DELETE':
+        this.#model.deletePoint(updateType, update);
+        break;
+    }
   };
 
   #onPointEditOpen = () => {
