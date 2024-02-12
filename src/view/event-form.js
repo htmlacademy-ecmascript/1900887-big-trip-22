@@ -13,7 +13,7 @@ export default class EventForm extends AbstractStatefulView {
   constructor() {
     super();
     this._restoreHandlers();
-    this._setState({'isDisabled': false});
+    this._setState({isDisabled: false});
   }
 
   get template() {
